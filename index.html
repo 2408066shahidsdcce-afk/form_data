@@ -22,7 +22,8 @@ f.onsubmit = async e => {
   e.preventDefault();
   try {
     await fetch(URL, { method: "POST", mode: "no-cors", body: new FormData(f) });
-  } catch {
+  } catch(e) {
+    console.log(e)
   }
 };
 </script>
