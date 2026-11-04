@@ -27,26 +27,10 @@
 <script>
 const URL = "https://script.google.com/macros/s/AKfycbwAKpY3T54BOnNrH-sK2QwczlzdAe80OLupgbbQhKud7TCbe3wkqgjuaRuxeppsYSm6xg/exec";
 const f = document.getElementById("f");
-const btn = document.getElementById("btn");
-const msg = document.getElementById("msg");
-
 f.onsubmit = async e => {
   e.preventDefault();
-  btn.disabled = true;
-  msg.textContent = "Sending...";
-  msg.style.color = "#666";
-
-  try {
-    await fetch(URL, { method: "POST", mode: "no-cors", body: new FormData(f) });
-    msg.textContent = "✅ Submitted successfully!";
-    msg.style.color = "green";
-    f.reset();
-  } catch (err) {
-    msg.textContent = "❌ Failed. Please try again.";
-    msg.style.color = "red";
-  }
-  
-  btn.disabled = false;
+ await fetch(URL, { method: "POST", mode: "no-cors", body: new FormData(f) });
+f.reset();
 };
 </script>
 </body>
